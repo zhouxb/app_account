@@ -1,0 +1,21 @@
+- load url from future
+- load i18n
+- load compress
+
+.well.sidebar-nav
+  %ul.nav.nav-list
+    %li.nav-header
+      {% trans 'setting' %}
+    %li
+      %a{'href':"{% url 'profile_update' %}"}
+        {% trans 'profile' %}
+    %li
+      %a{'href':"{% url 'change_password' %}"}
+        {% trans 'change password' %}
+
+- compress js
+  %script{'type':'text/coffeescript'}
+      paths = window.location.pathname.split('/')
+      $('a[href*=' + paths[2] + ']').parent().addClass('active')
+
+

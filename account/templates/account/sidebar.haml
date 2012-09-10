@@ -1,0 +1,11 @@
+- load url from future
+- load i18n
+
+.well.sidebar-nav
+  %ul.nav.nav-list
+    %li.nav-header
+      {% trans 'account management' %}
+    %li.active
+      %a{'href':"{% url 'account_index' %}"}
+        {% trans 'account management' %}
+

@@ -1,0 +1,28 @@
+- extends 'account/body.haml'
+- load url from future
+- load i18n
+
+- block main
+  %form.form-horizontal{'method':'POST', 'action':"{% url 'account_update' id %}"}
+    %legend
+      {% trans 'account detail' %}
+    - csrf_token
+    - for field in user_form
+      .control-group
+        %label.control-label
+          = field.label
+        .controls
+          = field
+          = field.errors
+    - for field in setpassword_form
+      .control-group
+        %label.control-label
+          = field.label
+        .controls
+          = field
+          = field.errors
+    .control-group
+      .controls
+        %button.btn{'type':'submit'}
+          {% trans 'update' %}
+

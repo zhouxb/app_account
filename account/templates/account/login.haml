@@ -1,0 +1,25 @@
+- extends 'base.haml'
+- load url from future
+- load i18n
+
+- block content
+
+  %form.form-horizontal{'method':'POST', 'action':"{% url 'account_login' %}"}
+    %legend
+      {% trans 'login' %}
+    - csrf_token
+    = form.non_field_errors
+    - for field in form
+      .control-group
+        %label.control-label
+          = field.label
+        .controls
+          = field
+          %p.help-block
+            = field.errors
+    .control-group
+      .controls
+        %button.btn{'type':'submit'}
+          {% trans 'login' %}
+        %input{'type':'hidden', 'name':'next', 'value':'={ next }'}
+

@@ -1,0 +1,11 @@
+- extends 'account/body.haml'
+
+- load url from future
+- load i18n
+- load render_table from django_tables2
+
+- block main
+  %p
+    %a.btn.btn-primary{'href':"{% url 'account_create' %}"}
+      {% trans 'account create' %}
+  - render_table table

@@ -1,0 +1,24 @@
+- extends 'account/body.haml'
+- load url from future
+- load i18n
+
+- block main
+
+  %form.form-horizontal{'method':'POST', 'action':"{% url 'account_create' %}"}
+    %legend
+      {% trans 'account create' %}
+    - csrf_token
+    = form.non_field_errors
+    - for field in form
+      .control-group
+        %label.control-label
+          = field.label
+        .controls
+          = field
+          %p.help-block
+            = field.errors
+    .control-group
+      .controls
+        %button.btn{'type':'submit'}
+          {% trans 'create' %}
+

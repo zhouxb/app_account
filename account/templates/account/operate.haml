@@ -1,0 +1,24 @@
+- load url from future
+- load i18n
+- load compress
+
+%a{'href':"{% url 'account_update' record.id %}"}
+  %i.icon-edit
+
+%a{'id':'{{ record.id }}', 'href':'#', 'onclick':'remove("{% url "account_delete" record.id %}", {{ record.id }})'}
+  %i.icon-trash
+
+- compress js
+  %script{'type':'text/coffeescript'}
+
+    @remove = (url, id) ->
+      bootbox.confirm '{% trans "Are you sure delete?" %}', (confirmed) ->
+        if confirmed
+          callback = (response) ->
+            if response['result'] == 'success'
+              $('a#' + id).parent().parent().fadeOut 1000, () ->
+                $('a#' + id).parent().parent().remove()
+            else
+              console.log response
+          $.get url, {}, callback, 'json'
+

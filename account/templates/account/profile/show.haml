@@ -1,0 +1,31 @@
+- extends 'account/body.haml'
+- load url from future
+- load i18n
+
+- block sidebar
+  - include 'account/profile/sidebar.haml'
+
+- block main
+  %form.form-horizontal{'method':'POST', 'action':"{% url 'profile_update' %}"}
+    %legend
+      {% trans 'account detail' %}
+    - csrf_token
+    - for field in useremail_form
+      .control-group
+        %label.control-label
+          = field.label
+        .controls
+          = field
+          = field.errors
+    - for field in userprofile_form
+      .control-group
+        %label.control-label
+          = field.label
+        .controls
+          = field
+          = field.errors
+    .control-group
+      .controls
+        %button.btn{'type':'submit'}
+          {% trans 'update' %}
+
