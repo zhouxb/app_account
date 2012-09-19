@@ -6,13 +6,12 @@ setup(
     author = "zhou.xingbo",
     author_email = "zhou.xingbo@gmail.com",
     description = "a Django user account app",
-    long_description = open("README.rst").read(),
+    long_description = open("README.md").read),
     license = "MIT",
-    #url = "http://github.com/pinax/django-user-accounts",
+    url = "https://github.com/zhouxb/app_account",
     packages = find_packages(),
     install_requires = [
-        #"django-appconf==0.5",
-        #"pytz==2012d"
+        #"south",
     ],
     classifiers = [
         "Development Status :: 4 - Beta",
