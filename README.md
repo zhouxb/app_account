@@ -17,8 +17,11 @@ INSTALL
 3. Add account to INSTALLED_APPS in settings.py
 
   INSTALLED_APPS = {
+
     ...
+
     account,
+
   }
 
 4. Add account url in urls.py
@@ -28,5 +31,6 @@ INSTALL
 5. Create DB
 
   python manage.py schemamigration account --init
+
   python manage.py migrate account
 
