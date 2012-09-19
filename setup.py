@@ -1,6 +1,20 @@
-from setuptools import setup, find_packages
+import os, sys
+from setuptools import find_packages
+from distutils.core import setup
+from distutils.command.install import INSTALL_SCHEMES
 
-print find_packages()
+for scheme in INSTALL_SCHEMES.values():
+    scheme['data'] = scheme['purelib']
+
+data_files = []
+account_dir = 'account'
+for dirpath, dirnames, filenames in os.walk(account_dir):
+    for i, dirname in enumerate(dirnames):
+        if dirname.startswith('.'): del dirnames[i]
+    if '__init__.py' in filenames:
+        pass
+    elif filenames:
+        data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
 
 setup(
     name = "app_account",
@@ -12,9 +26,7 @@ setup(
     license = "MIT",
     url = "https://github.com/zhouxb/app_account",
     packages = find_packages(),
-    data_files = [
-        ('account/templates', ['account/templates/*.haml', 'templates/*.html']),
-    ],
+    data_files = data_files,
     install_requires = [
         #"south",
     ],
