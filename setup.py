@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+print find_packages()
+
 setup(
     name = "app_account",
     version = "0.1",
@@ -10,6 +12,9 @@ setup(
     license = "MIT",
     url = "https://github.com/zhouxb/app_account",
     packages = find_packages(),
+    data_files = [
+        ('account/templates', ['account/templates/*.haml', 'templates/*.html']),
+    ],
     install_requires = [
         #"south",
     ],
