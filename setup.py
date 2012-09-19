@@ -6,7 +6,7 @@ setup(
     author = "zhou.xingbo",
     author_email = "zhou.xingbo@gmail.com",
     description = "a Django user account app",
-    long_description = open("README.md").read),
+    long_description = open("README.md").read(),
     license = "MIT",
     url = "https://github.com/zhouxb/app_account",
     packages = find_packages(),
